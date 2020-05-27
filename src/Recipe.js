@@ -1,8 +1,9 @@
 import React from 'react'
+import IngredientList from './IngredientList';
 
 export default function Recipe(props) {
 
-    const { name, cookTime, servings, instractions } = props
+    const { name, cookTime, servings, instractions, ingredients } = props
     return (
         <div>
             <div>
@@ -22,8 +23,12 @@ export default function Recipe(props) {
             </div>
             <div>
                 <span>Instractions:</span>
+                <div>{instractions}</div>
+            </div>
+            <div>
+                <span>Ingredients:</span>
                 <div>
-                    {instractions}
+                    <IngredientList ingredients={ingredients} />
                 </div>
             </div>
         </div>
