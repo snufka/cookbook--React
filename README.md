@@ -1,2 +1,2 @@
 # Cook Boook 
-coming soon
+coming soon.
