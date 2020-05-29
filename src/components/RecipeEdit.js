@@ -25,7 +25,7 @@ export default function RecipeEdit({ recipe }) {
                 <label htmlFor="instructions" className="recipe-edit__lable">
                     Instructions</label>
                 <textarea name="instructions" id="instructions"
-                    className="recipe-edit__input" value={recipe.instructions}> </textarea>
+                    className="recipe-edit__input" value={recipe.instractions}> </textarea>
             </div>
             <br />
             <label className="recipe-edit__lable">Ingredients</label>
@@ -34,8 +34,8 @@ export default function RecipeEdit({ recipe }) {
                 <div>Amount</div>
                 <div></div>
                 {recipe.ingredients.map(ingredient => (<RecipeIngredientEdit key={ingredient.id} ingredient={ingredient} />))}
-                <RecipeIngredientEdit />
-                <RecipeIngredientEdit />
+
+
             </div>
             <div className="recipe-edit__add-ingredient-btn-container">
                 <button className="btn-primary">Add Ingredient</button>
