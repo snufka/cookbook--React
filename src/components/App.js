@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import RecipeList from './RecipeList'
 import '../css/app.css';
 import uuidv4 from 'uuid/v4';
-
+import RecipeEdit from './RecipeEdit'
 export const RecipeContext = React.createContext()
 const LOCAL_STORAGE_KEY = 'cookingWithReact.recipes';
 
@@ -10,6 +10,8 @@ const LOCAL_STORAGE_KEY = 'cookingWithReact.recipes';
 function App() {
   //useState
   const [recipes, setRecipes] = useState(sampleRecipes)
+
+  //!!!! Hooks must be called in order!!!!
   //useEffect to render current recpies even after refresh
   useEffect(() => {
     const recipeJSON = localStorage.getItem(LOCAL_STORAGE_KEY)
@@ -48,6 +50,7 @@ function App() {
   return (
     <RecipeContext.Provider value={recipeContextValue}>
       <RecipeList recipes={recipes} />
+      <RecipeEdit />
     </RecipeContext.Provider>
   )
 
