@@ -3,14 +3,17 @@ import RecipeList from './RecipeList'
 import '../css/app.css';
 import uuidv4 from 'uuid/v4';
 import RecipeEdit from './RecipeEdit'
+
 export const RecipeContext = React.createContext()
 const LOCAL_STORAGE_KEY = 'cookingWithReact.recipes';
 
 
 function App() {
+  const [selectedRecipeId, setSelectedRecipeId] = useState()
   //useState
   const [recipes, setRecipes] = useState(sampleRecipes)
-
+  const selectedRecipe = recipes.find(recipe => recipe.id === selectedRecipeId)
+  console.log(selectedRecipe)
   //!!!! Hooks must be called in order!!!!
   //useEffect to render current recpies even after refresh
   useEffect(() => {
@@ -28,7 +31,12 @@ function App() {
 
   const recipeContextValue = {
     handleRecipeAdd: handleRecipeAdd,
-    handleRecipeDelete: handleRecipeDelete
+    handleRecipeDelete: handleRecipeDelete,
+    handleRecipeSelect: handleRecipeSelect
+
+  }
+  function handleRecipeSelect(id) {
+    setSelectedRecipeId(id)
 
   }
 
@@ -50,7 +58,7 @@ function App() {
   return (
     <RecipeContext.Provider value={recipeContextValue}>
       <RecipeList recipes={recipes} />
-      <RecipeEdit />
+      {selectedRecipe && <RecipeEdit recipe={selectedRecipe} />}
     </RecipeContext.Provider>
   )
 
@@ -82,7 +90,7 @@ const sampleRecipes = [
     name: 'Plain Pork',
     servings: 5,
     cookTime: '0:45',
-    instractions: "1. Put paprika on pork\n2. Put pork in oven\n3. Eat pork",
+    instructions: "1. Put paprika on pork\n2. Put pork in oven\n3. Eat pork",
     ingredients: [
       {
         id: 1,
