@@ -1,2 +1,3 @@
 # Cook Boook 
-coming soon.
+Add Edit and Delete Cooking Reciepes
+Deployed at https://reciepereactcookbook.netlify.app/
